@@ -1,3 +1,6 @@
+Lambdapi library for Zenon
+==========================
+
 Lambdapi library used by the automated theorem prover
 [ZenonModulo](https://github.com/Deducteam/zenon_modulo/tree/modulo)
 for generating Lambdapi proofs.
