@@ -26,7 +26,9 @@ jobs:
       - name: Install ${{ matrix.lambdapi-version }}
         run: opam install ${{ matrix.lambdapi-version }}
       - name: Install dependencies
-        run: opam install ${{ matrix.lambdapi-logics-version }}
+        run: |
+          opam repository -a add lambdapi https://github.com/deducteam/opam-lambdapi-repository.git
+          opam install ${{ matrix.lambdapi-logics-version }}
       - name: Check library
         run: |
           eval $(opam env)
