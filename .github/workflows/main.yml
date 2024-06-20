@@ -22,7 +22,9 @@ jobs:
         uses: ocaml/setup-ocaml@v2
         with:
           ocaml-compiler: 4.14.0
-#          opam-repositories: https://github.com/deducteam/opam-lambdapi-repository.git
+          opam-repositories:
+            default: https://github.com/ocaml/opam-repository.git
+            lambdapi: https://github.com/deducteam/opam-lambdapi-repository.git
 
       - name: Install required libraries
         run: sudo apt-get install -y libev-dev
@@ -35,9 +37,7 @@ jobs:
         run: opam install ${{ matrix.lambdapi-version }}
 
       - name: Install dependencies
-        run: |
-          opam repository -a add lambdapi https://github.com/deducteam/opam-lambdapi-repository.git
-          opam install ${{ matrix.lambdapi-logics-version }}
+        run: opam install ${{ matrix.lambdapi-logics-version }}
 
       - name: Check library
         run: |
