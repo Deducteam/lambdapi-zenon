@@ -1,0 +1,45 @@
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        lambdapi-version: [lambdapi, lambdapi.2.5.0, lambdapi.2.4.1, lambdapi.2.4.0, lambdapi.2.3.1, lambdapi.2.3.0, lambdapi.2.2.1, lambdapi.2.2.0, lambdapi.2.1.0, lambdapi.2.0.0]
+        lambdapi-logics-version: [lambdapi-logics.0.0.1]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out library
+        uses: actions/checkout@v4
+
+      - name: Install ocaml and opam
+        uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: 4.14.0
+          opam-repositories: |
+            default: https://github.com/ocaml/opam-repository.git
+            lambdapi: https://github.com/deducteam/opam-lambdapi-repository.git
+
+      - name: Install required libraries
+        run: sudo apt-get install -y libev-dev
+
+      - name: Setup opam for testing the development version
+        run: opam pin -n --dev-repo lambdapi
+        if: matrix.lambdapi-version == 'lambdapi'
+
+      - name: Install ${{ matrix.lambdapi-version }}
+        run: opam install ${{ matrix.lambdapi-version }}
+
+      - name: Install dependencies
+        run: opam install ${{ matrix.lambdapi-logics-version }}
+
+      - name: Check library
+        run: |
+          eval $(opam env)
+          make
