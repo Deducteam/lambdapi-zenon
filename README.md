@@ -17,7 +17,7 @@ Usage in Lambdapi
 -----------------
 
 ```
-require Logic.Zenon.Main;
+require open Logic.Zenon.Main;
 ```
 
 Compilation from the sources
