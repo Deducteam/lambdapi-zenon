@@ -9,6 +9,7 @@ license: "CECILL-2.1"
 homepage: "https://github.com/Deducteam/lambdapi-zenon"
 bug-reports: "https://github.com/Deducteam/lambdapi-zenon/issues"
 dev-repo: "git+https://github.com/Deducteam/lambdapi-zenon.git"
+build: [ make ]
 install: [ make "install" ]
 depends: [
   "lambdapi" {>= "2.3.0"}
