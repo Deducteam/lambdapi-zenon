@@ -25,13 +25,3 @@ symbol Rnotall a p : (Π t : τ a, π (¬ (p t)) → π ⊥) → π (¬ (∀ p))
 symbol Rsubst a p (t1 t2 : τ a) : (π (¬ (t1 = t2)) → π ⊥) → (π (p t2) → π ⊥) → π (p t1) → π ⊥;
 symbol Rconglr a p (t1 t2 : τ a) : (π (p t2) → π ⊥) → π (p t1) → π (t1 = t2) → π ⊥;
 symbol Rcongrl a p (t1 t2 : τ a) : (π (p t2) → π ⊥) → π (p t1) → π (t2 = t1) → π ⊥;
-
-// temporary renamings to be removed ultimately
-symbol Type ≔ Set;
-symbol ι : Set;
-symbol τ ≔ τ;
-symbol κ ≔ τ ι;
-symbol ∀α [a] ≔ ∀ [a];
-symbol ∃α [a] ≔ ∃ [a];
-symbol =α [a] ≔ (=) [a];
-symbol ϵ ≔ π;
