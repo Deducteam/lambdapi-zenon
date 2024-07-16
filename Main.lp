@@ -3,6 +3,10 @@ https://github.com/Deducteam/zenon_modulo/tree/modulo */
 
 require open Stdlib.Prop Stdlib.Set Stdlib.Eq Stdlib.FOL;
 
+symbol ι : Set;
+
+symbol select (a:Set) : τ a;
+
 symbol nnpp p : π (¬ ¬ p) → π p;
 symbol Rfalse : π ⊥ → π ⊥;
 symbol Rnottrue : π (¬ ⊤) → π ⊥;
