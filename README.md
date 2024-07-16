@@ -18,7 +18,7 @@ Usage in Lambdapi
 -----------------
 
 ```
-require open Logic.Zenon.Main;
+require open Stdlib.Prop Stdlib.Set Stdlib.Eq Stdlib.FOL Logic.Zenon.Main;
 ```
 
 Compilation from the sources
