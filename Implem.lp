@@ -131,3 +131,8 @@ symbol Rnotall a p : (Π t : τ a, π (¬ (p t)) → π ⊥) → π (¬ (∀ p))
 begin
 assume a p h1 h2; apply h2; assume t; apply ¬¬ₑ; refine h1 t
 end;
+
+symbol Rcut p : (π p → π ⊥) → (π (¬ p) → π ⊥) → π ⊥ ≔
+begin
+assume p np nnp; apply nnp; assume h; apply np; apply h
+end;

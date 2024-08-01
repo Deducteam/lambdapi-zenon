@@ -29,3 +29,4 @@ symbol Rnotall a p : (Π t : τ a, π (¬ (p t)) → π ⊥) → π (¬ (∀ p))
 symbol Rsubst a p (t1 t2 : τ a) : (π (¬ (t1 = t2)) → π ⊥) → (π (p t2) → π ⊥) → π (p t1) → π ⊥;
 symbol Rconglr a p (t1 t2 : τ a) : (π (p t2) → π ⊥) → π (p t1) → π (t1 = t2) → π ⊥;
 symbol Rcongrl a p (t1 t2 : τ a) : (π (p t2) → π ⊥) → π (p t1) → π (t2 = t1) → π ⊥;
+symbol Rcut p : (π p → π ⊥) → (π (¬ p) → π ⊥) → π ⊥;
