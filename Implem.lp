@@ -54,7 +54,7 @@ begin
 assume a p h1 h2; apply ∃ₑ h2; assume x px; apply h1 x px
 end;
 
-symbol Rall a p (t : τ a) : (π (p t) → π ⊥) → π (∀ p) → π ⊥ ≔
+symbol Rall a p (t : τ a) : (π (p t) → π ⊥) → π (`∀ x, p x) → π ⊥ ≔
 begin
 assume a p t npt h; apply npt; apply h t
 end;
@@ -127,7 +127,7 @@ begin
 refine ¬¬ₑ
 end;
 
-symbol Rnotall a p : (Π t : τ a, π (¬ (p t)) → π ⊥) → π (¬ (∀ p)) → π ⊥ ≔
+symbol Rnotall a p : (Π t : τ a, π (¬ (p t)) → π ⊥) → π (¬ (`∀ x, p x)) → π ⊥ ≔
 begin
 assume a p h1 h2; apply h2; assume t; apply ¬¬ₑ; refine h1 t
 end;
