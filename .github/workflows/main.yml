@@ -38,7 +38,7 @@ jobs:
 
       - name: Install lambdapi-stdlib.${{ matrix.lambdapi-stdlib-version }}
         run: opam install lambdapi-stdlib.${{ matrix.lambdapi-stdlib-version }}
-        if: matrix.stdlib-lambdapi-version != 'dev'
+        if: matrix.lambdapi-stdlib-version != 'dev'
 
       - name: Install lambdapi-stdlib development version
         run: |
