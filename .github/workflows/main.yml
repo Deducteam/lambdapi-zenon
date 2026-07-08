@@ -9,8 +9,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lambdapi-version: [lambdapi, lambdapi.3.0.0]
-        lambdapi-stdlib-version: [lambdapi-stdlib.1.3.1, lambdapi-stdlib.1.3.0]
+        lambdapi-version: [dev, 3.0.0]
+        lambdapi-stdlib-version: [1.4.0, 1.3.1, 1.3.0]
 
     runs-on: ubuntu-latest
 
@@ -21,23 +21,24 @@ jobs:
       - name: Install ocaml and opam
         uses: ocaml/setup-ocaml@v3
         with:
-          ocaml-compiler: 5.3
+          ocaml-compiler: 5.5
           opam-repositories: |
             default: https://github.com/ocaml/opam-repository.git
             lambdapi: https://github.com/deducteam/opam-lambdapi-repository.git
 
-      - name: Install required libraries
-        run: sudo apt-get install -y libev-dev
+#      - name: Install required libraries
+#        run: sudo apt-get install -y libev-dev
 
-      - name: Setup opam for testing the development version
-        run: opam pin -n --dev-repo lambdapi
-        if: matrix.lambdapi-version == 'lambdapi'
+      - name: Install lambdapi.${{ matrix.lambdapi-version }}
+        run: opam install lambdapi.${{ matrix.lambdapi-version }}
+        if: matrix.lambdapi-version != 'dev'
 
-      - name: Install ${{ matrix.lambdapi-version }}
-        run: opam install ${{ matrix.lambdapi-version }}
+      - name: Install lambdapi development version
+        run: cd lambdapi; opam install .
+        if: matrix.lambdapi-version == 'dev'
 
-      - name: Install dependencies
-        run: opam install ${{ matrix.lambdapi-stdlib-version }}
+      - name: Install lambdapi-stdlib.${{ matrix.lambdapi-stdlib-version }}
+        run: opam install lambdapi-stdlib.${{ matrix.lambdapi-stdlib-version }}
 
       - name: Check library
         run: |
