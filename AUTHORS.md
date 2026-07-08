@@ -1,1 +1,2 @@
 - Frédéric Blanqui
+- Guillaume Burel
