@@ -1,6 +1,6 @@
 /* Implementation of Zenon rules in classical FOL. */
 
-require open Stdlib.Prop Stdlib.Set Stdlib.Eq Stdlib.FOL;
+require open Stdlib.FOL Stdlib.Eq;
 
 symbol Rfalse : π ⊥ → π ⊥ ≔
 begin

@@ -1,7 +1,7 @@
 /* Logic used by the automated theorem prover ZenonModulo
 https://github.com/Deducteam/zenon_modulo/tree/modulo */
 
-require open Stdlib.Prop Stdlib.Set Stdlib.Eq Stdlib.FOL;
+require open Stdlib.FOL Stdlib.Eq;
 
 symbol select ≔ el;
 
